@@ -5,7 +5,20 @@
 具体实现在library中
 
 使用方式:
-添加library
+添加library依赖
+```
+allprojects {
+	repositories {
+		...
+		maven { url 'https://www.jitpack.io' }
+	}
+}
+```
+```
+dependencies {
+        compile 'com.github.LT474297694:ActivityAndFragmentCommunication:v1.0.0'
+}
+```
 
 1.在BaseFragment和BaseActivity中添加部分代码
 ```kotlin
