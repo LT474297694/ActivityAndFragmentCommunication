@@ -3,9 +3,9 @@ package com.lt.frame.manager
 import com.lt.frame.Function
 import com.lt.frame.FunctionNoParameterNoResult
 import com.lt.frame.exception.FunctionException
+import com.lt.frame.function.FuncitonOnlyParameter
 import com.lt.frame.function.FuncitonOnlyResult
 import com.lt.frame.function.FunctionHaveParameterHaveResult
-import com.lt.frame.function.FunctionOnlyParameter
 import java.util.*
 
 /**
@@ -15,10 +15,10 @@ import java.util.*
  */
 object FunctionManager {
 
-    private val M_FUNCTION_ONLY_PARAMETER: HashMap<String?, FunctionOnlyParameter<Any?>>
-            by lazy { HashMap<String?, FunctionOnlyParameter<Any?>>() }
-    private val M_FUNCTION_ONLY_RESULT: HashMap<String?, FunctionOnlyResult<*>>
-            by lazy { HashMap<String?, FunctionOnlyResult<*>>() }
+    private val mFuncitonOnlyParameter: HashMap<String?, FuncitonOnlyParameter<Any?>>
+            by lazy { HashMap<String?, FuncitonOnlyParameter<Any?>>() }
+    private val mFuncitonOnlyResult: HashMap<String?, FuncitonOnlyResult<*>>
+            by lazy { HashMap<String?, FuncitonOnlyResult<*>>() }
     private val mFunctionHaveParameterHaveResult: HashMap<String?, FunctionHaveParameterHaveResult<Any?, *>>
             by lazy { HashMap<String?, FunctionHaveParameterHaveResult<Any?, *>>() }
     private val mFunctionNoParameterNoResult: HashMap<String?, FunctionNoParameterNoResult>
@@ -31,8 +31,8 @@ object FunctionManager {
             if (it.funcName.isNullOrEmpty())
                 throw FunctionException("function name isNullOrEmpty")
             when (it) {
-                is FunctionOnlyResult<*> -> M_FUNCTION_ONLY_RESULT.put(it.funcName, it)
-                is FunctionOnlyParameter<*> -> M_FUNCTION_ONLY_PARAMETER.put(it.funcName, it as FunctionOnlyParameter<Any?>)
+                is FuncitonOnlyResult<*> -> mFuncitonOnlyResult.put(it.funcName, it)
+                is FuncitonOnlyParameter<*> -> mFuncitonOnlyParameter.put(it.funcName, it as FuncitonOnlyParameter<Any?>)
                 is FunctionHaveParameterHaveResult<*, *> -> mFunctionHaveParameterHaveResult.put(it.funcName, it as FunctionHaveParameterHaveResult<Any?, *>)
                 is FunctionNoParameterNoResult -> mFunctionNoParameterNoResult.put(it.funcName, it)
             }
@@ -41,16 +41,16 @@ object FunctionManager {
     }
 
 
+
     fun invokeFunc(functionName: String?) {
         if (functionName.isNullOrEmpty()) return
-        val noParameterNoResultFunc = mFunctionNoParameterNoResult[functionName] ?:
-                throw FunctionException("Not Find This Function:$functionName")
-        noParameterNoResultFunc.function()
+        val noParameterNoResultFunc = mFunctionNoParameterNoResult[functionName]
+        noParameterNoResultFunc?.apply { function() }
     }
 
     fun <T> invokeFunc(functionName: String?, resultClass: Class<T>?): T? {
         if (functionName.isNullOrEmpty()) return null
-        val onlyResultFunc = M_FUNCTION_ONLY_RESULT[functionName] ?:
+        val onlyResultFunc = mFuncitonOnlyResult[functionName] ?:
                 throw FunctionException("Not Find This Function:$functionName")
 
         return if (resultClass != null) {
@@ -62,7 +62,7 @@ object FunctionManager {
 
     fun <T> invokeFunc(functionName: String?, data: T?) {
         if (functionName.isNullOrEmpty()) return
-        val onlyParameterFunc = M_FUNCTION_ONLY_PARAMETER[functionName] ?:
+        val onlyParameterFunc = mFuncitonOnlyParameter[functionName] ?:
                 throw FunctionException("Not Find This Function:$functionName")
         onlyParameterFunc.function(data)
     }
