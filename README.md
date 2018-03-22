@@ -16,7 +16,7 @@ allprojects {
 ```
 ```
 dependencies {
-        compile 'com.github.LT474297694:ActivityAndFragmentCommunication:v1.0.2'
+        compile 'com.github.LT474297694:ActivityAndFragmentCommunication:v1.0.3'
 }
 ```
 
