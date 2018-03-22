@@ -7,6 +7,6 @@ import com.lt.frame.Function
  * qq:474297694
  * 功能: 只有参数的Function
  */
-abstract class FuncitonOnlyParameter<in T>(funcName: String?) : Function(funcName) {
+abstract class FunctionOnlyParameter<in T>(funcName: String?) : Function(funcName) {
     abstract fun function(t: T?)
 }

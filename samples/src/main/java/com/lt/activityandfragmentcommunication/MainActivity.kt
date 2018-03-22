@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.lt.activityandfragmentcommunication.base.BaseActivity
 import com.lt.frame.FunctionNoParameterNoResult
-import com.lt.frame.function.FuncitonOnlyParameter
-import com.lt.frame.function.FuncitonOnlyResult
+import com.lt.frame.function.FunctionOnlyParameter
+import com.lt.frame.function.FunctionOnlyResult
 import com.lt.frame.function.FunctionHaveParameterHaveResult
 
 
@@ -33,11 +33,11 @@ class MainActivity : BaseActivity() {
                 override fun function() {
                     Toast.makeText(this@MainActivity, "无参无返回值", Toast.LENGTH_LONG).show()
                 }
-            }, object : FuncitonOnlyParameter<String>(SampleFragment.functionName2) {
+            }, object : FunctionOnlyParameter<String>(SampleFragment.functionName2) {
                 override fun function(t: String?) {
                     Toast.makeText(this@MainActivity, "有参无返回值:$t", Toast.LENGTH_LONG).show()
                 }
-            }, object : FuncitonOnlyResult<String>(SampleFragment.functionName3) {
+            }, object : FunctionOnlyResult<String>(SampleFragment.functionName3) {
 
                 override fun function(): String? = "Activity给你的数据"
 
