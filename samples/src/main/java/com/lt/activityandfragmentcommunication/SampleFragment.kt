@@ -33,7 +33,7 @@ class SampleFragment : BaseFragment() {
     }
 
     //当前Framgent需要绑定的接口名称
-    override fun bindFunctionNames(): Array<String>? =
+    override fun bindFunctionNames() =
             arrayOf(functionName1, functionName2, functionName3, functionName4)
 
     private fun initListener() {
@@ -52,7 +52,6 @@ class SampleFragment : BaseFragment() {
             val str = FunctionManager.invokeFunc(functionName4, "我是Fragment传递的参数", String::class.java)
             Toast.makeText(context, "Fragment获得返回值:$str", Toast.LENGTH_LONG).show()
         }
-
     }
 
 }

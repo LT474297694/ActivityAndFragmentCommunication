@@ -11,8 +11,6 @@ import com.lt.frame.manager.FunctionManager
  */
 
 open class BaseActivity : AppCompatActivity() {
-
-
     fun setFragmentFunction(fragment: BaseFragment) {
         //fragment需要bind的FunctionNames
         val bindFunctionNames = fragment.bindFunctionNames()
@@ -24,8 +22,6 @@ open class BaseActivity : AppCompatActivity() {
             FunctionManager.addFunc(*bindFunction.toTypedArray())
         }
     }
-
     //需要绑定的函数子类实现
     open fun bindFunctions(): Array<Function>? = arrayOf()
-
 }
