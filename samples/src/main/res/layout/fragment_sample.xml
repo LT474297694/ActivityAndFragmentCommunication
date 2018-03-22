@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btFunc1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="无参无返回值" />
+
+    <Button
+        android:id="@+id/btFunc2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="有参无返回值" />
+
+    <Button
+        android:id="@+id/btFunc3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="无参有返回值" />
+
+    <Button
+        android:id="@+id/btFunc4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="有参有返回值" />
+
+</LinearLayout>

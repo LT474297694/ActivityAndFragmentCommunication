@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ActivityAndFragmentCommunication.iml" filepath="$PROJECT_DIR$/ActivityAndFragmentCommunication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/communication-library/library.iml" filepath="$PROJECT_DIR$/communication-library/library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/samples/app.iml" filepath="$PROJECT_DIR$/samples/app.iml" />
+    </modules>
+  </component>
+</project>
